@@ -13,6 +13,20 @@ export const getActividades = async (req, res) => {
   }
 };
 
+export const getActividad = async (req, res) => {
+  try {
+    const actividad = await Actividad.findAll({
+      where: {
+        idusuario: 1,
+        idactividad: req.params.idactividad,
+      },
+    });
+    res.send(actividad);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const createActividad = async (req, res) => {
   Actividad.create(req.body)
     .then(() => res.send({ message: "Registo de Actividad exitoso" }))
@@ -31,9 +45,9 @@ export const updateActividad = async (req, res) => {
     });
 };
 
-export const deleteActividad =  (req, res) => {
+export const deleteActividad = (req, res) => {
   Actividad.destroy({
-    where: { idactividad:req.params.idactividad },
+    where: { idactividad: req.params.idactividad },
   })
     .then(() => res.send({ message: "Se elimina la Actividad exitosamente" }))
     .catch((err) => {
