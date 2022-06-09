@@ -16,19 +16,15 @@ app.use(
     extended: true,
   })
 );
-// app.use(cors());
+
+app.use(cors());
 
 try {
   await db.authenticate;
 } catch (err) {
   console.error(err);
 }
-
-app.get("/", (req, res) => {
-  res.json({ message: "ok" });
-});
-
-app.use(ruta);
+app.use('/api/',ruta);
 
 
 app.listen(port, () => {
