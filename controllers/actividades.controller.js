@@ -23,7 +23,7 @@ export const createActividad = async (req, res) => {
 
 export const updateActividad = async (req, res) => {
   Actividad.update(req.body, {
-    where: { idactividad: req.body.idactividad },
+    where: { idactividad: req.params.idactividad },
   })
     .then(() => res.send({ message: "Actualizacion de Actividad exitoso" }))
     .catch((err) => {
@@ -31,11 +31,11 @@ export const updateActividad = async (req, res) => {
     });
 };
 
-export const deleteActividad = async (req, res) => {
+export const deleteActividad =  (req, res) => {
   Actividad.destroy({
-    where: { idactividad: req.body.idactividad },
+    where: { idactividad:req.params.idactividad },
   })
-    .then(() => res.send({ message: "Actualizacion de Actividad exitoso" }))
+    .then(() => res.send({ message: "Se elimina la Actividad exitosamente" }))
     .catch((err) => {
       res.status(500).send("Fallo la actualizacion de actividad" + err);
     });

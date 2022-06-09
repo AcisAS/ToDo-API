@@ -13,6 +13,6 @@ const ruta=express.Router();
 ruta.get('/actividades',getActividades);
 ruta.post('/crear-actividad',createActividad);
 ruta.post('/actualizar-actividad',updateActividad);
-ruta.post('/eliminar-actividad',deleteActividad);
+ruta.delete('/eliminar-actividad/:idactividad',deleteActividad);
 
 export default ruta;
